@@ -1,0 +1,14 @@
+version: "2"
+services:
+  node:
+    build: "." # build node container from Dockerfile in current directory
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    command: "nodemon server.js"
+    ports:
+    # bind the express port (3000) to the host (3000)
+      - "3000:3000"
